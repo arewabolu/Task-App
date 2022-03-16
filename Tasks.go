@@ -1,13 +1,28 @@
 package main
 
 import (
+	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
+	"fyne.io/fyne/v2/container"
+	"fyne.io/fyne/v2/widget"
 )
+
+func taskPage() fyne.CanvasObject{
+	taskNO:=0
+	taskList := widget.NewList(
+		func() int{
+			return taskNO
+		},
+		func() fyne.CanvasObject{},
+		func(lii widget.ListItemID, co fyne.CanvasObject) {}
+	)
+	splitView := container.NewHSplit()
+}
 
 func main() {
 	myApp := app.New()
 	wind := myApp.NewWindow("Tasks")
-	wind.SetContent()
+	wind.SetContent(taskPage())
 	wind.ShowAndRun()
 }
 
